@@ -1,0 +1,16 @@
+{
+  "identifier": "remote-api-access",
+  "description": "Allow remote web app to invoke Tauri APIs",
+  "windows": ["main"],
+  "remote": {
+    "urls": ["http://localhost:3000/*"]
+  },
+  "permissions": [
+    "core:default",
+    "notification:default",
+    "notification:allow-show",
+    "notification:allow-request-permission",
+    "notification:allow-is-permission-granted",
+    "store:default"
+  ]
+}

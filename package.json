@@ -1,0 +1,31 @@
+{
+  "name": "agent-playground-desktop",
+  "version": "0.1.0",
+  "description": "Desktop shell for Agent Playground",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "icon": "tauri icon ./app-icon.png"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phucsystem/agent-playground-desktop.git"
+  },
+  "keywords": ["tauri", "desktop", "chat"],
+  "author": "phucsystem",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/phucsystem/agent-playground-desktop/issues"
+  },
+  "homepage": "https://github.com/phucsystem/agent-playground-desktop#readme",
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.10.1"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.10.1",
+    "@tauri-apps/plugin-notification": "^2.3.3",
+    "@tauri-apps/plugin-store": "^2.4.2"
+  }
+}
