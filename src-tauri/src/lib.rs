@@ -53,9 +53,11 @@ pub fn run() {
                 }
             }
 
-            // Navigate to web app URL
+            // Navigate to web app URL (compile-time default, runtime override)
+            let compile_time_url = option_env!("AGENT_PLAYGROUND_URL")
+                .unwrap_or("http://localhost:3000");
             let web_url = std::env::var("AGENT_PLAYGROUND_URL")
-                .unwrap_or_else(|_| "http://localhost:3000".to_string());
+                .unwrap_or_else(|_| compile_time_url.to_string());
 
             let config = load_app_config(&handle);
             let url = if config.web_app_url.is_empty() {

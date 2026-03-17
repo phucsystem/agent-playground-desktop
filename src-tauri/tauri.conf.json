@@ -3,7 +3,7 @@
   "identifier": "com.agent-playground.desktop",
   "version": "0.1.0",
   "build": {
-    "beforeBuildCommand": "",
+    "beforeBuildCommand": "bash scripts/patch-remote-url.sh",
     "beforeDevCommand": "",
     "frontendDist": "../src",
     "devUrl": "http://localhost:3000"
