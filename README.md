@@ -109,12 +109,19 @@ The desktop shell loads the web app via remote URL. A JS bridge injected on page
 
 ## Release Pipeline
 
-Triggered automatically when a PR is merged to `main`. The version tag is read from `src-tauri/tauri.conf.json`.
+Uses [release-please](https://github.com/googleapis/release-please) for automated semantic versioning.
+
+**Flow:**
+1. Push conventional commits to `main` (via PR merge)
+2. `release-please` auto-creates a Release PR (bumps version in `package.json`, `tauri.conf.json`, `Cargo.toml` + updates `CHANGELOG.md`)
+3. Review and merge the Release PR
+4. Tag `v*` is created, triggering the build workflow (macOS + Windows)
 
 ### GitHub Secrets Required
 
 | Secret | Purpose |
 |--------|---------|
+| `RELEASE_TOKEN` | GitHub PAT for release creation |
 | `AGENT_PLAYGROUND_URL` | Production web app URL (baked into binary) |
 | `TAURI_SIGNING_PRIVATE_KEY` | Ed25519 key for update signature verification |
 | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | Key password |

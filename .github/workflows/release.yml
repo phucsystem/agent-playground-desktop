@@ -1,41 +1,11 @@
-name: Release
+name: Build & Release
 
 on:
-  pull_request:
-    types: [closed]
-    branches: [main]
+  push:
+    tags: ['v*']
 
 jobs:
-  create-release:
-    if: github.event.pull_request.merged == true
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.value }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Read version from tauri.conf.json
-        id: version
-        run: |
-          VERSION=$(node -p "require('./src-tauri/tauri.conf.json').version")
-          echo "value=v${VERSION}" >> "$GITHUB_OUTPUT"
-
-      - name: Create tag and release
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        run: |
-          TAG="${{ steps.version.outputs.value }}"
-          git tag "$TAG" || true
-          git push origin "$TAG" || true
-          gh release create "$TAG" \
-            --title "Agent Playground Desktop $TAG" \
-            --notes "See CHANGELOG for details." \
-            --latest || echo "Release already exists"
-
   build:
-    needs: create-release
     permissions:
       contents: write
     strategy:
@@ -68,8 +38,8 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
           AGENT_PLAYGROUND_URL: ${{ secrets.AGENT_PLAYGROUND_URL }}
         with:
-          tagName: ${{ needs.create-release.outputs.version }}
-          releaseName: 'Agent Playground Desktop ${{ needs.create-release.outputs.version }}'
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Agent Playground Desktop ${{ github.ref_name }}'
           releaseBody: 'See CHANGELOG for details.'
           releaseDraft: false
           prerelease: false
