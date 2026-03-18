@@ -3,6 +3,17 @@
 
   const invoke = window.__TAURI__.core.invoke;
 
+  (async function requestNotificationPermission() {
+    try {
+      const granted = await invoke("plugin:notification|is_permission_granted");
+      if (!granted) {
+        await invoke("plugin:notification|request_permission");
+      }
+    } catch (error) {
+      console.warn("[Agent Playground Desktop] Notification permission check failed:", error);
+    }
+  })();
+
   window.addEventListener("tauri:new-message", function (event) {
     const detail = event.detail || {};
     invoke("notify_new_message", {
