@@ -305,7 +305,7 @@ Key configuration sections (see actual `src-tauri/tauri.conf.json` for current v
 {
   "productName": "Agent Playground",
   "identifier": "com.agent-playground.desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "app": {
     "withGlobalTauri": true,
     "windows": [
@@ -329,7 +329,7 @@ Key configuration sections (see actual `src-tauri/tauri.conf.json` for current v
 }
 ```
 
-**Note:** Remote URL and CSP configuration are handled via capabilities files (see Section 6), not in tauri.conf.json.
+**Note:** Version is read from `src-tauri/Cargo.toml`, not here. Remote URL and CSP configuration are handled via capabilities files (see Section 6), not in tauri.conf.json.
 
 ## 6. Capabilities
 
