@@ -1,7 +1,7 @@
 {
   "productName": "Agent Playground",
   "identifier": "com.agent-playground.desktop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "build": {
     "beforeBuildCommand": "bash scripts/patch-remote-url.sh",
     "beforeDevCommand": "",

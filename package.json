@@ -1,6 +1,6 @@
 {
   "name": "agent-playground-desktop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Desktop shell for Agent Playground",
   "scripts": {
     "tauri": "tauri",
@@ -12,7 +12,11 @@
     "type": "git",
     "url": "git+https://github.com/phucsystem/agent-playground-desktop.git"
   },
-  "keywords": ["tauri", "desktop", "chat"],
+  "keywords": [
+    "tauri",
+    "desktop",
+    "chat"
+  ],
   "author": "phucsystem",
   "license": "ISC",
   "type": "commonjs",
