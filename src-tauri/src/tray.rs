@@ -7,6 +7,7 @@ use tauri::{
 use tauri_plugin_autostart::ManagerExt as AutostartManagerExt;
 
 use crate::commands::{load_app_config, save_app_config};
+use crate::updater;
 
 pub fn setup_tray(app: &AppHandle) -> Result<(), Box<dyn std::error::Error>> {
     let show_hide = MenuItemBuilder::with_id("show_hide", "Show Window").build(app)?;
@@ -23,6 +24,9 @@ pub fn setup_tray(app: &AppHandle) -> Result<(), Box<dyn std::error::Error>> {
         .build(app)?;
 
     let separator2 = PredefinedMenuItem::separator(app)?;
+    let check_updates = MenuItemBuilder::with_id("check_updates", "Check for Updates")
+        .build(app)?;
+    let separator3 = PredefinedMenuItem::separator(app)?;
     let quit = MenuItemBuilder::with_id("quit", "Quit").build(app)?;
 
     let menu = MenuBuilder::new(app)
@@ -31,6 +35,8 @@ pub fn setup_tray(app: &AppHandle) -> Result<(), Box<dyn std::error::Error>> {
         .item(&notifications)
         .item(&auto_start)
         .item(&separator2)
+        .item(&check_updates)
+        .item(&separator3)
         .item(&quit)
         .build()?;
 
@@ -64,6 +70,12 @@ pub fn setup_tray(app: &AppHandle) -> Result<(), Box<dyn std::error::Error>> {
                     } else {
                         let _ = autostart.disable();
                     }
+                }
+                "check_updates" => {
+                    let update_handle = app.clone();
+                    tauri::async_runtime::spawn(async move {
+                        updater::run_update_check(&update_handle, true).await;
+                    });
                 }
                 "quit" => {
                     app.exit(0);
