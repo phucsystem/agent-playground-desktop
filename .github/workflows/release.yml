@@ -41,6 +41,6 @@ jobs:
           tagName: ${{ github.ref_name }}
           releaseName: 'Agent Playground Desktop ${{ github.ref_name }}'
           releaseBody: 'See CHANGELOG for details.'
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
