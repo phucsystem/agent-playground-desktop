@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.2...agent-playground-desktop-v0.2.3) (2026-03-18)
+
+
+### Bug Fixes
+
+* **ci:** merge release-please and build into single workflow ([11b8df0](https://github.com/phucsystem/agent-playground-desktop/commit/11b8df0335822918ab14a0ebabf1eebb5877e355))
+* **ci:** merge release-please and build into single workflow ([d84359f](https://github.com/phucsystem/agent-playground-desktop/commit/d84359f8ecd23bf129f2b5a39013602f7065a14c))
+
 ## [0.2.2](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.1...agent-playground-desktop-v0.2.2) (2026-03-18)
 
 
