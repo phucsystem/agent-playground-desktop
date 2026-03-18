@@ -109,11 +109,7 @@ The desktop shell loads the web app via remote URL. A JS bridge injected on page
 
 ## Release Pipeline
 
-Triggered by pushing a git tag:
-
-```bash
-git tag v0.1.0 && git push --tags
-```
+Triggered automatically when a PR is merged to `main`. The version tag is read from `src-tauri/tauri.conf.json`.
 
 ### GitHub Secrets Required
 
