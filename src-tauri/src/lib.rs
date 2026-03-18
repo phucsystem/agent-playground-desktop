@@ -1,5 +1,6 @@
 mod commands;
 mod tray;
+mod updater;
 
 use commands::{load_app_config, load_window_state, save_window_state, AppState, WindowState};
 use tauri::Manager;
@@ -94,6 +95,9 @@ pub fn run() {
                     }
                 });
             }
+
+            // Check for updates in background
+            updater::check_for_updates_background(&handle);
 
             // Register global shortcut
             let shortcut_str = config.global_shortcut.clone();
