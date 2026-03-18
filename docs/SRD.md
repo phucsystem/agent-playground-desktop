@@ -63,7 +63,7 @@ Note: Admin/User/Agent role distinctions are handled by the web app. Desktop she
 |----|---------|----------|-------------|
 | FR-12 | Auto-updater | P3 | Check for updates on app launch (and periodically every 6 hours). Show update dialog with version info and changelog excerpt. User chooses Install Now or Later. Uses Tauri updater plugin with GitHub Releases as update server. |
 | FR-13 | Deep link protocol | P3 | Register `agentplay://` protocol handler. Format: `agentplay://conversation/{id}`. When clicked externally, opens/focuses app and navigates webview to the conversation. |
-| FR-14 | CI/CD build pipeline | P3 | GitHub Actions workflow that builds and signs desktop app for macOS (universal binary), Windows (x64), and Linux (AppImage). Triggered on git tag push. Uploads artifacts to GitHub Releases. |
+| FR-14 | CI/CD build pipeline | P3 | GitHub Actions workflow that builds and signs desktop app for macOS (universal binary), Windows (x64), and Linux (AppImage). Triggered on PR merge to main. Uploads artifacts to GitHub Releases. |
 | FR-15 | Splash/loading screen | P3 | Show minimal loading indicator while remote web app loads. Display app icon + "Connecting..." text. Hide once webview `DOMContentLoaded` fires. Prevents blank window on slow connections. |
 
 ## 4. Screen List (S-xx)
