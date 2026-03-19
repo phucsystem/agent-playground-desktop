@@ -1,6 +1,6 @@
 [package]
 name = "agent-playground-desktop"
-version = "0.2.4"
+version = "0.2.5"
 description = "Desktop shell for Agent Playground"
 authors = ["phucsystem"]
 edition = "2021"
