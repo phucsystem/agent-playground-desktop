@@ -25,6 +25,7 @@
           conversation_id: detail.conversationId || "",
           conversation_name: detail.conversationName || null,
           is_group: detail.isGroup || false,
+          force: detail.force || false,
         },
       });
     });
@@ -51,7 +52,30 @@
       invoke("update_badge_count", { count: 0 });
     });
 
-    console.log("[Agent Playground Desktop] Bridge loaded");
+    var notificationCounter = 0;
+    var OriginalNotification = window.Notification;
+    window.Notification = function (title, options) {
+      notificationCounter++;
+      var opts = options || {};
+      invoke("notify_new_message", {
+        payload: {
+          sender_name: title || "Unknown",
+          message_text: opts.body || "",
+          conversation_id: opts.tag || "notif-" + notificationCounter,
+          conversation_name: null,
+          is_group: false,
+          force: true,
+        },
+      });
+      return { close: function () {} };
+    };
+    window.Notification.permission = "granted";
+    window.Notification.requestPermission = function (callback) {
+      if (callback) callback("granted");
+      return Promise.resolve("granted");
+    };
+
+    console.log("[Agent Playground Desktop] Bridge loaded (Notification override active)");
   }
 
   function waitForTauri(attempt) {

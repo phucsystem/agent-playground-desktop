@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Mutex;
 use tauri::{AppHandle, Manager, State};
 use tauri_plugin_notification::NotificationExt;
@@ -71,6 +72,8 @@ pub struct NotifyNewMessagePayload {
     pub conversation_id: String,
     pub conversation_name: Option<String>,
     pub is_group: bool,
+    #[serde(default)]
+    pub force: bool,
 }
 
 #[tauri::command]
@@ -84,14 +87,16 @@ pub fn notify_new_message(
         return;
     }
 
-    if let Some(window) = app.get_webview_window("main") {
-        if window.is_focused().unwrap_or(false) {
-            let active_id = state
-                .active_conversation_id
-                .lock()
-                .unwrap_or_else(|poisoned| poisoned.into_inner());
-            if active_id.as_deref() == Some(&payload.conversation_id) {
-                return;
+    if !payload.force {
+        if let Some(window) = app.get_webview_window("main") {
+            if window.is_focused().unwrap_or(false) {
+                let active_id = state
+                    .active_conversation_id
+                    .lock()
+                    .unwrap_or_else(|poisoned| poisoned.into_inner());
+                if active_id.as_deref() == Some(&payload.conversation_id) {
+                    return;
+                }
             }
         }
     }
@@ -113,7 +118,10 @@ pub fn notify_new_message(
         payload.sender_name.clone()
     };
 
-    if let Err(err) = app.notification().builder().title(&title).body(&body).show() {
+    static NOTIFICATION_ID: AtomicI32 = AtomicI32::new(1);
+    let notification_id = NOTIFICATION_ID.fetch_add(1, Ordering::Relaxed);
+
+    if let Err(err) = app.notification().builder().id(notification_id).title(&title).body(&body).show() {
         eprintln!("Failed to send notification: {}", err);
     }
 
