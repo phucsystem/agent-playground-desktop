@@ -18,6 +18,9 @@
     "chat"
   ],
   "author": "phucsystem",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "license": "ISC",
   "type": "commonjs",
   "bugs": {

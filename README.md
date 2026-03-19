@@ -26,7 +26,7 @@ Native desktop shell for [Agent Playground](https://github.com/phucsystem/agent-
 ## Prerequisites
 
 - [Rust](https://rustup.rs/) (1.70+)
-- [Node.js](https://nodejs.org/) (18+)
+- [Node.js](https://nodejs.org/) (24+)
 - The [Agent Playground](https://github.com/phucsystem/agent-playground) web app running
 
 ## Quick Start
