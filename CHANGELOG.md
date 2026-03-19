@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.5](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.4...agent-playground-desktop-v0.2.5) (2026-03-19)
+
+
+### Bug Fixes
+
+* add sound and persistent alert style for macOS notifications ([6c6cfff](https://github.com/phucsystem/agent-playground-desktop/commit/6c6cfffe2133e70d2e0a5cdd81eb97c065b3b8e0))
+* add sound and persistent alert style for macOS notifications ([6dd8788](https://github.com/phucsystem/agent-playground-desktop/commit/6dd8788db15a78f7c920b1b6ff33161762e31e58))
+
 ## [0.2.4](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.3...agent-playground-desktop-v0.2.4) (2026-03-19)
 
 
