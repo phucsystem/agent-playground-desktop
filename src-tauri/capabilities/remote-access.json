@@ -1,9 +1,14 @@
 {
   "identifier": "remote-api-access",
   "description": "Allow remote web app to invoke Tauri APIs",
-  "windows": ["main"],
+  "windows": [
+    "main"
+  ],
   "remote": {
-    "urls": ["http://localhost:3000/*"]
+    "urls": [
+      "http://localhost:3000/*",
+      "https://agent-playground.phucsystemlabs.com/*"
+    ]
   },
   "permissions": [
     "core:default",
