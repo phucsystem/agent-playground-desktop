@@ -121,7 +121,7 @@ pub fn notify_new_message(
     static NOTIFICATION_ID: AtomicI32 = AtomicI32::new(1);
     let notification_id = NOTIFICATION_ID.fetch_add(1, Ordering::Relaxed);
 
-    if let Err(err) = app.notification().builder().id(notification_id).title(&title).body(&body).show() {
+    if let Err(err) = app.notification().builder().id(notification_id).title(&title).body(&body).sound("default").show() {
         eprintln!("Failed to send notification: {}", err);
     }
 
