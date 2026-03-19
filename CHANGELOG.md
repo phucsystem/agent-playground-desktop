@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.4](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.3...agent-playground-desktop-v0.2.4) (2026-03-19)
+
+
+### Bug Fixes
+
+* route browser Notification API through Tauri native notifications ([cdd70c6](https://github.com/phucsystem/agent-playground-desktop/commit/cdd70c62d97dcd5d4202d3b78ccc42e8c003a491))
+* route browser Notification API through Tauri native notifications ([0dc2e81](https://github.com/phucsystem/agent-playground-desktop/commit/0dc2e81e8c8c6978d7cd859b0b0ae3d6ceeeaafc))
+
 ## [0.2.3](https://github.com/phucsystem/agent-playground-desktop/compare/agent-playground-desktop-v0.2.2...agent-playground-desktop-v0.2.3) (2026-03-18)
 
 
